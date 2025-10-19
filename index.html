@@ -41,8 +41,9 @@
 <body class="bg-black text-white">
     
     <nav class="navbar flex justify-between items-center">
-        <div class="navbar-brand">
-            <h1 class="text-2xl font-bold text-yellow-400">East Coast Trade Networks</h1>
+        <div class="navbar-brand flex items-center">
+            <img id="navbarLogo" src="logo.jpg" alt="East Coast Trade Networks Logo" class="h-16 cursor-pointer">
+            <span class="ml-4 text-2xl font-bold text-yellow-400">East Coast Trade Networks</span>
         </div>
         <ul class="navbar-links list-none m-0 p-0 flex">
             <li class="ml-6"><a href="#home" class="text-white decoration-none text-base p-2 rounded-md transition-all duration-300 hover:bg-yellow-400 hover:text-black">Home</a></li>
@@ -56,7 +57,7 @@
         <section id="home" class="flex flex-col justify-center items-center text-center min-h-screen px-6 -mt-20">
             <div data-aos="fade-up">
                 <h2 class="text-5xl md:text-6xl font-bold text-yellow-300 drop-shadow-lg mb-4">Welcome to East Coast Trade Networks</h2>
-                <h2 class="font-bold text-white/90 text-lg">Explore my website to learn more about who I am, what I do, and how you can reach me.</h2>
+                <h2 class="font-bold text-white/90 text-lg">Explore our website to learn more about who we are, what we do, and how you can reach us.</h2>
                 <h3 class="font-bold text-white/90 text-lg">From Local to Global</h3>
                 <a href="#about" class="bg-yellow-400 text-black px-8 py-3 rounded-xl hover:bg-yellow-300 transition font-semibold mt-6 inline-block">
                     Learn More About Us
@@ -99,7 +100,7 @@
             <h3 class="text-5xl font-semibold text-yellow-300 mb-6">Contact Me</h3>
             <p class="text-gray-200 mb-8 font-bold">Feel free to reach out for collaborations or business queries.</p>
             <div class="bg-black/1 backdrop-blur-md p-8 rounded-2xl max-w-lg mx-auto shadow-xl">
-                <p class="text-gray-200 mb-2"><strong class="text-yellow-300">Email:</strong> info@eastcoasttradenetwork.com</p>
+                <p class="text-gray-200 mb-2"><strong class="text-yellow-300">Email:</strong> sales@eastcoasttradenetwork.com</p>
                 <p class="text-gray-200 mb-2"><strong class="text-yellow-300">Phone:</strong><a href="tel:+27620711679">+27 62 071 1679</a></p>
                 <p class="text-gray-200 mb-4"><strong class="text-yellow-300">Location:</strong> Durban, South Africa</p>
                 <a href="mailto:sales@eastcoasttradenetwork.com"
@@ -113,6 +114,11 @@
             &copy; 2025 East Coast Trade Networks | All Rights Reserved
         </footer>
     </main>
+    
+    <div id="logoModal" class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center hidden z-[1001] transition-opacity duration-300">
+        <img class="max-w-[90vw] max-h-[90vh] object-contain" src="logo.jpg" alt="Enlarged Logo">
+    </div>
+
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
@@ -120,6 +126,22 @@
             duration: 1000,
             once: true 
         });
+    </script>
+    
+    <script>
+        // Get the modal and the navbar logo
+        const modal = document.getElementById('logoModal');
+        const navbarLogo = document.getElementById('navbarLogo');
+
+        // When the user clicks on the logo, open the modal
+        navbarLogo.onclick = function() {
+            modal.classList.remove('hidden');
+        }
+
+        // When the user clicks on the modal (the background), close it
+        modal.onclick = function() {
+            modal.classList.add('hidden');
+        }
     </script>
 </body>
 </html>
