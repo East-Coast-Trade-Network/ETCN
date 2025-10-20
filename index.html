@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>East Coast Trade Networks | Global Trade &amp; Logistics</title>
     
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -45,11 +47,16 @@
             <img id="navbarLogo" src="logo.jpg" alt="East Coast Trade Networks Logo" class="h-16 cursor-pointer">
             <span class="ml-4 text-2xl font-bold text-yellow-400">East Coast Trade Networks</span>
         </div>
-        <ul class="navbar-links list-none m-0 p-0 flex">
-            <li class="ml-6"><a href="#home" class="text-white decoration-none text-base p-2 rounded-md transition-all duration-300 hover:bg-yellow-400 hover:text-black">Home</a></li>
-            <li class="ml-6"><a href="#about" class="text-white decoration-none text-base p-2 rounded-md transition-all duration-300 hover:bg-yellow-400 hover:text-black">About</a></li>
-            <li class="ml-6"><a href="#contact" class="text-white decoration-none text-base p-2 rounded-md transition-all duration-300 hover:bg-yellow-400 hover:text-black">Contact</a></li>
+        
+        <ul id="nav-links" class="navbar-links list-none m-0 p-0 hidden absolute top-full left-0 w-full bg-neutral-900/90 backdrop-blur-md flex-col items-center py-6 space-y-4 md:flex md:static md:flex-row md:w-auto md:bg-transparent md:backdrop-blur-none md:space-y-0 md:space-x-6">
+            <li><a href="#home" class="nav-link text-white decoration-none text-base p-2 rounded-md transition-all duration-300 hover:bg-yellow-400 hover:text-black">Home</a></li>
+            <li><a href="#about" class="nav-link text-white decoration-none text-base p-2 rounded-md transition-all duration-300 hover:bg-yellow-400 hover:text-black">About</a></li>
+            <li><a href="#contact" class="nav-link text-white decoration-none text-base p-2 rounded-md transition-all duration-300 hover:bg-yellow-400 hover:text-black">Contact</a></li>
         </ul>
+
+        <button id="hamburger-btn" class="md:hidden text-white focus:outline-none z-50">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
     </nav>
 
     <main class="bg-black/70 backdrop-blur-sm min-h-screen pt-20">
@@ -122,26 +129,43 @@
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        // AOS Initialization
         AOS.init({ 
             duration: 1000,
             once: true 
         });
-    </script>
-    
-    <script>
-        // Get the modal and the navbar logo
+        
+        // Modal Logic
         const modal = document.getElementById('logoModal');
         const navbarLogo = document.getElementById('navbarLogo');
 
-        // When the user clicks on the logo, open the modal
         navbarLogo.onclick = function() {
             modal.classList.remove('hidden');
         }
 
-        // When the user clicks on the modal (the background), close it
         modal.onclick = function() {
             modal.classList.add('hidden');
         }
+
+        // --- Hamburger Menu Logic ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navLinks = document.getElementById('nav-links');
+        const links = navLinks.querySelectorAll('.nav-link');
+
+        // Toggle menu on hamburger click
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('hidden');
+        });
+
+        // Close menu when a link is clicked on mobile
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) { // Tailwind's 'md' breakpoint is 768px
+                    navLinks.classList.add('hidden');
+                }
+            });
+        });
     </script>
 </body>
 </html>
+
